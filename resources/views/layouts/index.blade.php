@@ -10,8 +10,9 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <script src="{{ asset('js/app.js') }}"></script>
     <div class="bg-gradient-to-br from-yellow-800 via-purple-600 to-yellow-500">
+    <link rel="icon" href="img/logo.png">
 
-        <title>store</title>
+        <title>Inicio</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -47,6 +48,8 @@
     </div>
     @stack('modals')
     @livewireScripts
+
+
 </body>
 
 </html>

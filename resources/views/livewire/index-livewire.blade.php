@@ -76,7 +76,8 @@
             <h1 class="text-3xl md:text-4xl font-bold text-white dark:text-white mb-4">Súper precios en tus artículos
                 favoritos</h1>
             <p class="text-zinc-100 dark:text-zinc-300 mb-6">Gana más por tu dinero</p>
-            <button class="bg-purple-600 text-white px-6 py-3 rounded-full text-lg">Comprar ahora</button>
+            <a href="{{ url('tienda') }}" class="bg-purple-600 text-white px-6 py-3 rounded-full text-lg">Comprar
+                ahora</a>
         </div>
         <div class="md:w-1/2 mt-6 md:mt-0 ">
             <video src="vid/vid1.mp4" class="rounded-lg shadow-lg" autoplay muted loop></video>
@@ -85,27 +86,69 @@
     </div>
 
 
-
-    <div class="p-6 text-white">
-        <h2 class="text-2xl font-bold text-center mb-6 dark:text-white">Productos recientes</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
-            @foreach ($products as $product)
-                <div class="border rounded-lg p-4  bg-purple-100 shadow-xl shadow-purple-300 shadow-opacity-75">
-                    <span class="bg-red-500 text-white px-2 py-1 text-xs font-bold">OFERTA</span>
-                    <img src="{{ Storage::url($product->image->url) }}" alt=""
-                    class="w-full h-48 object-contain my-4">
-                    <p class="text-zinc-700 dark:text-zinc-300">{{ $product->description }}</p>
-                    <p class="text-red-500 line-through">{{ $product->price }}</p>
-                    <p class="text-purple-500">$984.00</p>
-                </div>
-            @endforeach
-
+    {{-- Productos recientes --}}
+    <div>
+        <div class="p-8 text-white">
+            <h2 class="text-2xl font-bold text-center mb-8 dark:text-white animate-pulse"
+                style="text-shadow: 0 0 5px #a855f7, 0 0 15px #a855f7, 0 0 20px #a855f7; filter: brightness(1.5);">
+                PRODUCTOS RECIENTES</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto px-4">
+                @foreach ($products as $product)
+                    <div
+                        class="border rounded-lg p-6 bg-purple-100 shadow-xl shadow-purple-300 shadow-opacity-75 relative">
+                        <span class="bg-red-500 text-white px-2 py-1 text-xs font-bold animate-pulse"
+                            style="text-shadow: 0 0 5px #ef4444, 0 0 15px #ef4444, 0 0 20px #ef4444; filter: brightness(1.5);">OFERTA</span>
+                        <img src="{{ Storage::url($product->image->url) }}" alt=""
+                            class="w-full h-48 object-contain my-6">
+                        <p class="text-zinc-700 dark:text-zinc-300">{{ $product->description }}</p>
+                        <div class="mt-6">
+                            @if ($product->discount > 0)
+                                <p class="line-through text-sm text-red-500">S/ {{ $product->price }}</p>
+                            @endif
+                            <p class="font-bold text-black">S/
+                                {{ number_format($product->price - ($product->discount / 100) * $product->price, 2) }}
+                            </p>
+                        </div>
+                        @auth
+                            <div class="absolute top-2 left-2">
+                                @can('Editar productos')
+                                    <x-button
+                                        onclick="Livewire.emit('openModal','admin.product-create',{{ json_encode(['product' => $product]) }})"><i
+                                            class="fas fa-edit"></i></x-jet-button>
+                                    @endcan
+                                    @can('Eliminar productos')
+                                        <x-danger-button wire:click="$emit('deleteItem',{{ $product->id }})"><i
+                                                class="fas fa-trash"></i></x-jet-danger-button>
+                                        @endcan
+                            </div>
+                        @endauth
+                        <button wire:click="agregarProducto({{ $product->id }})" x-data="{}"
+                            x-on:click="
+                            $wire.call('agregarProducto', {{ $product->id }})
+                            .then(() => {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Producto agregado',
+                                    text: 'El producto se ha agregado correctamente al carrito',
+                                    timer: 2000,
+                                    showConfirmButton: false
+                                });
+                            })
+                        "
+                            class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-400 text-sm w-full mt-6">
+                            <i class="fa-solid fa-cart-arrow-down text-yellow-400"></i> Agregar
+                        </button>
+                    </div>
+                @endforeach
+            </div>
+            <div class="text-center mt-8">
+                <a href="{{ url('tienda') }}">
+                    <button class="bg-purple-500 text-white hover:text-yellow-400 py-2 px-6 rounded-full">Ver
+                        Más</button>
+                </a>
+            </div>
         </div>
-        <div class="text-center mt-6">
-            <a href="{{ url('vermas') }}">
-                <button class="bg-purple-500 text-white hover:text-yellow-400 py-2 px-4 rounded-full">Ver Más</button>
-            </a>
-        </div>
+        <div class="mt-2">{{$products->links()}}</div>
     </div>
 
 
@@ -221,8 +264,7 @@
                 <img src="https://placehold.co/40x20" alt="PayPal" />
             </div>
             <p class="text-sm">
-                &copy; 2035 Creado por NovoTec con
-                <a href="https://wix.com" class="hover:underline">Wix.com</a>
+                &copy; 2035 Creado por Jhackns
             </p>
         </div>
     </footer>
