@@ -1,30 +1,119 @@
 .nav-container {
-    position: sticky;
-    z-index: 3;
-    top: 0;
-  }
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    height: 10vh;
-    background-color: #1b1b1b;
-  }
-  .navbar a {
-    text-decoration: none;
-  }
-  
-  .navbar-logo {
-    justify-self: start;
-    margin-left: 20px;
-    color: #fff;
-    margin-top: 4vh;
-    cursor: pointer;
-  }
-  
-  .navbar-cart {
-    font-size: 25px;
-    margin-right: 20px;
-    margin-top: 4vh;
-    cursor: pointer;
-    text-decoration: none;
-  }
+  position: relative; /* Cambiar a relative si no quieres que se quede pegado */
+  z-index: 3;
+  top: 0;
+}
+
+.navbar {
+  display: flex;
+  align-items: center; /* Alinear verticalmente los elementos */
+  justify-content: space-between; /* Asegura que el logo esté a la izquierda y los íconos a la derecha */
+  height: 10vh;
+  background-color: #1b1b1b;
+  padding: 0 20px; /* Agregar un poco de padding a los lados */
+}
+
+.navbar a {
+  text-decoration: none;
+}
+
+.navbar-logo {
+  color: #fff;
+  margin-top: 4vh;
+  cursor: pointer;
+}
+
+.nav-icons {
+  display: flex; /* Alinear los íconos en una fila */
+  align-items: center; /* Alinear verticalmente los íconos */
+}
+
+.btn-user {
+  display: flex;
+  align-items: center;
+  margin-right: 10px; /* Espacio entre el ícono de usuario y el carrito */
+}
+
+.icon-user {
+  width: 24px; /* Ajusta el tamaño según sea necesario */
+  height: 24px; /* Ajusta el tamaño según sea necesario */
+}
+
+.btn-cart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+  background-color: transparent;
+  position: relative;
+}
+
+.btn-cart::after {
+  content: attr(data-quantity);
+  width: fit-content;
+  height: fit-content;
+  position: absolute;
+  font-size: 15px;
+  color: white;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  opacity: 0;
+  visibility: hidden;
+  transition: .2s linear;
+  top: 115%;
+}
+
+.icon-cart {
+  width: 24.38px;
+  height: 30.52px;
+  transition: .2s linear;
+}
+
+.icon-cart path {
+  fill: rgb(240, 8, 8);
+  transition: .2s linear;
+}
+
+.btn-cart:hover > .icon-cart {
+  transform: scale(1.2);
+}
+
+.btn-cart:hover > .icon-cart path {
+  fill: rgb(186, 34, 233);
+}
+
+.btn-cart:hover::after {
+  visibility: visible;
+  opacity: 1;
+  top: 105%;
+}
+
+.quantity {
+  display: none;
+}
+
+.dropdown {
+  position: absolute; /* Posicionar las ventanas de manera absoluta */
+  top: 60px; /* Ajustar según sea necesario */
+  right: 20px; /* Alinear a la derecha */
+  background-color: #fff; /* Fondo blanco */
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+  z-index: 10; /* Asegurarse de que esté por encima de otros elementos */
+  display: flex;
+  flex-direction: column; /* Alinear los elementos en columna */
+}
+
+.dropdown-item {
+  padding: 10px 20px; /* Espaciado interno */
+  text-decoration: none; /* Sin subrayado */
+  color: #333; /* Color del texto */
+  border-radius: 10px; /* Bordes redondeados */
+  transition: background-color 0.2s; /* Transición suave */
+}
+
+.dropdown-item:hover {
+  background-color: #f0f0f0; /* Color de fondo al pasar el mouse */
+}

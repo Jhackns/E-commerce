@@ -1,23 +1,44 @@
 [
     {
       "id": 1,
-      "name": "Monstera",
+      "name": "Reloj Digital",
       "price": 10,
-      "img": "https://res.cloudinary.com/easyplant/image/fetch/f_auto,q_auto:good,c_fill,w_728,h_852/https://cdn.shopify.com/s/files/1/0513/8032/2473/files/MonsteraDeliciosaLarge_Sandy_Pink.jpg?v=1709222612",
+      "img": "/img/1.jpg",
       "quanty": 1
     },
     {
       "id": 2,
-      "name": "Ficus Ruby",
-      "price": 20,
-      "img": "https://res.cloudinary.com/easyplant/image/fetch/f_auto,q_auto:good,c_fill,w_1400,h_1624/https://cdn.shopify.com/s/files/1/0513/8032/2473/products/FicusRubyLarge_Natural_Bamboo.jpg?v=1709220381",
+      "name": "Portatil Plegable",
+      "price": 2999,
+      "img": "/img/2.jpg",
       "quanty": 1
     },
     {
       "id": 3,
-      "name": "Money Tree",
+      "name": "Drone",
+      "price": 110,
+      "img": "/img/3.jpg",
+      "quanty": 1
+    },
+    {
+      "id": 4,
+      "name": "Samsung S22",
+      "price": 400,
+      "img": "/img/4.jpg",
+      "quanty": 1
+    },
+    {
+      "id": 5,
+      "name": "Audifonos",
       "price": 27,
-      "img": "https://res.cloudinary.com/easyplant/image/fetch/f_auto,q_auto:good,c_fill,w_728,h_852/https://cdn.shopify.com/s/files/1/0513/8032/2473/products/MoneyTreeLarge_Natural_Bamboo_e5fed03a-cff4-4679-a7b0-67de4079ec48.jpg?v=1709222220",
+      "img": "/img/5.jpg",
+      "quanty": 1
+    },
+    {
+      "id": 6,
+      "name": "Gafas de realidad virtual",
+      "price": 130,
+      "img": "/img/6.jpg",
       "quanty": 1
     }
   ]

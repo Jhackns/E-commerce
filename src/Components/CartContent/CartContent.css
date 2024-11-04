@@ -1,30 +1,41 @@
+.cart-elements-container {
+  margin-top: 60px; /* Este valor debe coincidir con la altura del navbar */
+}
+
 .product-card-container {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    margin: 30px;
-  }
-  
-  .product-card-container > img {
-    height: 120px;
-    width: 100px;
-    text-align: center;
-  }
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: 30px;
+}
 
-  .cartTotal {
-    text-align: center;
-  }
+.product-card-container > img {
+  height: 120px;
+  width: 100px;
+  text-align: center;
+}
 
-  .cart-delete-product {
-    cursor: pointer;
-  }
+.cartTotal {
+  text-align: center;
+}
 
-  .counter-button {
-    cursor: pointer;
-    font-weight: bold;
-  }
+.cart-delete-product {
+  cursor: pointer;
+}
 
-  .cart-message-center {
-    text-align: center;
-    margin-top: 40px;
-  }
+.counter-button {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.cart-message-center {
+  text-align: center;
+  margin-top: 40px;
+}
+.cart-message-center {
+  text-align: center;
+  margin-top: 60px; /* Este valor debe coincidir con la altura del navbar */
+  font-size: 24px; /* Ajusta el tamaño de la fuente según sea necesario */
+  color: #333; /* Color del texto */
+  /* Puedes agregar más estilos aquí si lo deseas */
+}

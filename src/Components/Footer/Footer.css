@@ -1,0 +1,15 @@
+.footer {
+    background-color: #1b1b1b; /* Color de fondo */
+    color: white; /* Color del texto */
+    text-align: center; /* Centrar el texto */
+    padding: 20px 0; /* Espaciado superior e inferior */
+    position: relative; /* Para que se mantenga en su lugar */
+    bottom: 0; /* Alinear al fondo */
+    width: 100%; /* Ancho completo */
+    margin: 0; /* Eliminar márgenes */
+}
+
+.footer-container {
+    max-width: 1200px; /* Ancho máximo */
+    margin: 0 auto; /* Centrar el contenedor */
+}
